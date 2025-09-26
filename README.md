@@ -1,6 +1,6 @@
-# Afya Connect Dashboard
+# Afya Connect 
 
-Afya Connect Dashboard is a healthcare platform that provides patients and users with easy access to various medical services.  
+Afya Connect is a healthcare platform that provides patients and users with easy access to various medical services.  
 It features a responsive sidebar navigation with dropdown menus to explore:
 
 - 🩺 **General Consultation** – Book or learn about basic checkups  
