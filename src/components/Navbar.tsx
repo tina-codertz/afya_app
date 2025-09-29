@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate} from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
@@ -15,25 +15,23 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { name: "Home", path: "/", icon: Users },
-  { name: "About", path: "/about", icon: Users },
+  { name: "Home", path: "/dashboard", icon: Users },
+  { name: "About", path: "/dashboard/about", icon: Users },
   {
     name: "Services",
-    path: "/services",
+    path: "/dashboard/services",
     icon: Stethoscope,
     dropdown: [
-      { name: "General Consultation", path: "/services", icon: Stethoscope },
-      { name: "Specialist Care", path: "/services", icon: Heart },
-      { name: "Telemedicine", path: "/services", icon: Video },
-      { name: "Emergency Care", path: "/services", icon: Ambulance },
-      { name: "Diagnostic Services", path: "/services", icon: Scan },
-      { name: "Mental Health", path: "/services", icon: Brain },
+      { name: "General Consultation", path: "/dashboard/services/general", icon: Stethoscope },
+      { name: "Specialist Care", path: "/dashboard/services/specialist", icon: Heart },
+      { name: "AI assistance", path: "/dashboard/services/ai", icon: Video },
+      { name: "Mental Health", path: "/dashboard/services/mental-health", icon: Brain },
     ],
   },
-  { name: "Doctors", path: "/doctors", icon: Users },
-  { name: "Book Appointment", path: "/book-appointment", icon: Users },
-  { name: "Blog", path: "/blog", icon: Users },
-  { name: "Contact", path: "/contact", icon: Users },
+  { name: "Doctors", path: "/dashboard/doctors", icon: Users },
+  { name: "Book Appointment", path: "/dashboard/book-appointment", icon: Users },
+  { name: "Blog", path: "/dashboard/blog", icon: Users },
+  { name: "Contact", path: "/dashboard/contact", icon: Users },
 ];
 
 export const Navbar: React.FC = () => {
@@ -41,6 +39,7 @@ export const Navbar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedState = localStorage.getItem("sidebarCollapsed");
@@ -283,13 +282,13 @@ export const Navbar: React.FC = () => {
             </div>
           ))}
         </div>
+         <button
+        onClick={() => navigate('/')}
+        className="fixed bottom-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600 transition-colors"
+      >
+        Logout
+      </button>
       </motion.nav>
-
-      <div className="flex-1 p-6 overflow-y-auto">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-          Dashboard Content
-        </h1>
-      </div>
     </div>
   );
 };
