@@ -8,7 +8,7 @@ export default function AfyaChat(userId: string) {
   const [loading, setLoading] = useState(false);
   const boxRef = React.useRef<HTMLDivElement>(null);
 
-
+  
   useEffect(()=>{
     if (boxRef.current) boxRef.current.scrollTop =boxRef.current.scrollHeight 
 
