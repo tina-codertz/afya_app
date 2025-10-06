@@ -9,13 +9,15 @@ import {
   Stethoscope,
   HeartPulse,
 } from "lucide-react";
+import { Navbar } from "../components/Navbar";
 
 export const Landing: React.FC = () => {
   return (
     <>
-      <section className="sticky top-0 bg-gradient-to-r from-green-600 to-green-100 p-8 flex  justify-center items-center shadow-lg-md ">
-        <h1 className="text-5xl font-bold text-white">Afya Connect</h1>
-      </section>
+     <section className="sticky top-0 "> 
+   <Navbar/>
+    </section>
+      
       {/* Hero Section */}
       <section className="min-h-screen flex items-center pt-32 lg:pt-0  ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -77,7 +79,7 @@ export const Landing: React.FC = () => {
             className="relative"
           >
             <div className="relative w-full max-w-lg mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
+              <div className="absolute  bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
               <img
                 src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Healthcare professionals"

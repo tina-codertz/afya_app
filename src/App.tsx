@@ -1,64 +1,60 @@
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-import { Landing } from "./pages/landing"
+
 import { Layout } from './components/Layout';
 import Auth from './pages/Auth';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/dashboard/Dashboard';
 import DashboardHome from './pages/DashboardHome';
 import About from './pages/About';
 import Services from './pages/Services';
-import Doctors from './pages/Doctors';
-import BookAppointment from './pages/BookAppointment';
-import Blog from './pages/Blog';
+import Doctors from './pages/dashboard/Doctors';
+import BookAppointment from './pages/dashboard/BookAppointment';
+import Blog from './pages/dashboard/Blog';
 import Contact from './pages/Contact';
-import GeneralService from './pages/services/General';
-import SpecialistService from './pages/services/Specialist';
-import AIService from './pages/services/AI';
-import MentalHealthService from './pages/services/MentalHealth';
+import GeneralService from './pages/dashboard/services/General';
+import SpecialistService from './pages/dashboard/services/Specialist';
 
-const AppRoutes = () => {
-  const location = useLocation();
+import MentalHealthService from './pages/dashboard/services/MentalHealth';
+import { Landing } from './pages/Landing';
+// import AfyaChat from './pages/services/AI';
 
-  const noLayoutRoutes = ['/auth','/']
-  const useLayout = !noLayoutRoutes.includes(location.pathname);
 
-  return useLayout? (
-   
-     <Layout>
-        <Routes>
-          
-          <Route
+
+const App = () => {
+  return (
+    <Router>
+    <Layout>
+        <Routes>  
+           <Route path="/" element={<Landing />} />
+           <Route path="/auth" element={<Auth />} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/services" element={<Services/>} />
+
+        <Route
         path="/dashboard"
         element={<Dashboard/>}>
             <Route index element={<DashboardHome/>} />
-            <Route path="about" element={<About/>} />
-            <Route path="services" element={<Services/>} />
             <Route path="services/general" element={<GeneralService/>} />
             <Route path="services/specialist" element={<SpecialistService/>} />
-            <Route path="services/ai" element={<AIService/>} />
+            {/* <Route path="services/ai" element={<AfyaChat/>} /> */}
             <Route path="services/mental-health" element={<MentalHealthService/>} />
             <Route path="doctors" element={<Doctors/>} />
             <Route path="book-appointment" element={<BookAppointment/>} />
             <Route path="blog" element={<Blog/>} />
-            <Route path="contact" element={<Contact/>} />
           </Route>
+   
         </Routes>
     
         </Layout>
-  ):
-  (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/auth" element={<Auth />} />
-    </Routes>
-  )
-}
+        </Router>
 
-export default function App(){
-  return(
-    <Router>
-      <AppRoutes/>
-    </Router>
+  
   )
 }
+export default App
+
+
+
+ 
