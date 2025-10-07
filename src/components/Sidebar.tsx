@@ -5,10 +5,9 @@ import {
   Heart,
   ChevronDown,
   Stethoscope,
-  Video,
-  Ambulance,
-  Scan,
+  BrainCircuit,
   Brain,
+  PenTool,
   Users,
   Menu,
   X,
@@ -24,13 +23,13 @@ const navItems = [
     dropdown: [
       { name: "General Consultation", path: "/dashboard/services/general", icon: Stethoscope },
       { name: "Specialist Care", path: "/dashboard/services/specialist", icon: Heart },
-      { name: "AI assistance", path: "/dashboard/services/ai", icon: Video },
+      { name: "AI assistance", path: "/dashboard/services/ai", icon:BrainCircuit },
       { name: "Mental Health", path: "/dashboard/services/mental-health", icon: Brain },
     ],
   },
   { name: "Doctors", path: "/dashboard/doctors", icon: Users },
   { name: "Book Appointment", path: "/dashboard/book-appointment", icon: Users },
-  { name: "Blog", path: "/dashboard/blog", icon: Users },
+  { name: "Blog", path: "/dashboard/blog", icon: PenTool },
   // { name: "Contact", path: "/dashboard/contact", icon: Users },
 ];
 

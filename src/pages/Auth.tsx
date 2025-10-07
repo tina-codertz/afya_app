@@ -61,9 +61,9 @@ const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-100 to-green-300 dark:from-gray-900 dark:to-gray-700">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-300">
       <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-2 text-center text-green-700">
+        <h2 className="text-2xl font-bold mb-2 text-center text-blue-400">
           {isLogin ? "Sign in" : "Register"}
         </h2>
         <p className="text-center text-gray-600 mb-6">
@@ -118,12 +118,12 @@ const AuthPage: React.FC = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition"
+            className="w-full bg-blue-300 text-white p-3 rounded-lg hover:bg-blue-400 transition"
           >
             {isLogin ? "Sign In" : "Sign Up"}
           </button>
@@ -139,7 +139,7 @@ const AuthPage: React.FC = () => {
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
           <span
             onClick={() => setIsLogin(!isLogin)}
-            className="text-green-600 cursor-pointer font-medium"
+            className="text-blue-300 cursor-pointer font-medium"
           >
             {isLogin ? "Register" : "Login"}
           </span>
