@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useSignIn, useSignUp } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
-// import { Github, Apple, Mail } from "lucide-react"; 
-import { FcGoogle} from "react-icons/fc"; 
-import { FaApple } from "react-icons/fa"; 
-
-import {  GithubIcon, Mail } from "lucide-react";
+// Removed import of clerkClient since it's not available in frontend code
+import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
+import { ArrowLeft, GithubIcon, Mail } from "lucide-react";
 
 const AuthPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,27 +15,41 @@ const AuthPage: React.FC = () => {
   const { signUp, isLoaded: signUpLoaded } = useSignUp();
   const navigate = useNavigate();
 
+  // Function to save user to MongoDB
+  const recordUserToDB = async (userData: { email: string; clerkId: string }) => {
+    try {
+      const res = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+      const data = await res.json();
+      console.log("Saved user:", data);
+    } catch (error) {
+      console.error("Failed to save user:", error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!signInLoaded || !signUpLoaded) return;
 
     try {
       if (isLogin) {
-        const result = await signIn.create({
-          identifier: email,
-          password,
-        });
+        const result = await signIn.create({ identifier: email, password });
 
-        if (result.createdSessionId) {
+        if (result.status === "complete" && result.createdSessionId) {
+          // Use result.userId directly if available, otherwise fallback to email
+          const userId = result.userId || email;
+
+          await recordUserToDB({ email, clerkId: userId });
           navigate("/dashboard");
         }
       } else {
-        const result = await signUp.create({
-          emailAddress: email,
-          password,
-        });
+        const result = await signUp.create({ emailAddress: email, password });
 
-        if (result.createdSessionId) {
+        if (result.status === "complete" && result.createdUserId) {
+          await recordUserToDB({ email, clerkId: result.createdUserId });
           navigate("/dashboard");
         }
       }
@@ -70,7 +83,6 @@ const AuthPage: React.FC = () => {
           Get access to more health features
         </p>
 
-       
         <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => handleSocialLogin("oauth_google")}
@@ -85,11 +97,11 @@ const AuthPage: React.FC = () => {
             <GithubIcon className="w-6 h-6" />
           </button>
           <button
-  onClick={() => handleSocialLogin("oauth_apple")}
-  className="p-3 border rounded-full hover:bg-gray-100"
->
-  <FaApple className="w-6 h-6 text-black" />
-</button>
+            onClick={() => handleSocialLogin("oauth_apple")}
+            className="p-3 border rounded-full hover:bg-gray-100"
+          >
+            <FaApple className="w-6 h-6 text-black" />
+          </button>
         </div>
 
         <div className="flex items-center gap-2 mb-4">
@@ -98,7 +110,6 @@ const AuthPage: React.FC = () => {
           <div className="flex-1 h-px bg-gray-300"></div>
         </div>
 
-    
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex items-center border rounded-lg p-3">
             <Mail className="w-5 h-5 text-gray-500 mr-2" />
@@ -143,6 +154,12 @@ const AuthPage: React.FC = () => {
           >
             {isLogin ? "Register" : "Login"}
           </span>
+          <Link
+            to="/"
+            className="p-3 flex text-blue-300 items-center justify-center gap-1"
+          >
+            <ArrowLeft className="w-4 h-4" /> go back
+          </Link>
         </p>
       </div>
     </div>
