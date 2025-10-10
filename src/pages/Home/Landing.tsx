@@ -9,14 +9,14 @@ import {
   Stethoscope,
   HeartPulse,
 } from "lucide-react";
-import { Navbar } from "../components/Navbar";
+// import { Navbar } from "../components/Navbar";
 
 export const Landing: React.FC = () => {
   return (
     <>
-     <section className="sticky top-0 "> 
+     {/* <section className="sticky top-0 "> 
    <Navbar/>
-    </section>
+    </section> */}
       
       {/* Hero Section */}
       <section className="min-h-screen flex items-center pt-32 lg:pt-0  ">

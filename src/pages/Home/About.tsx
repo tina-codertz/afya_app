@@ -1,9 +1,9 @@
-import React from "react";
-import { Navbar } from "../components/Navbar";
+
+// import { Navbar } from "../components/Navbar";
 import { motion } from "framer-motion";
 import { HeartPulse, Eye, HandHeart, BrainCircuit, Stethoscope, PenTool } from "lucide-react";
-import img from "../assets/66139.jpg"
-import image from "../assets/image.jpg"
+import img from "../../assets/66139.jpg"
+import image from "../../assets/image.jpg"
 
 const About = () => {
   const cardData = [
@@ -49,7 +49,9 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Navbar />
+        {/* <section className="sticky top-0">
+      <Navbar/>
+  </section> */}
 
     
       <section

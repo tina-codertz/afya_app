@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar } from '../components/Navbar';
+// import { Navbar } from '../components/Navbar';
 import { BookOpenText, Bot, CalendarCheck, HeartPulse, ShieldAlert, Stethoscope } from 'lucide-react';
-import service from "../assets/serv.jpg"
+import service from "../../assets/serv.jpg"
 import {motion} from "framer-motion"
 
 const Services: React.FC = () => {
@@ -42,7 +42,9 @@ const Services: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900">
+      {/* <section className="sticky top-0">
       <Navbar/>
+  </section> */}
       <section className='relative py-20 text-center bg-cover bg-center '
       style={{backgroundImage:`url(${service})`}}
       >

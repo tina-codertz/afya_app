@@ -1,1 +1,45 @@
-@import "tailwindcss"
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap") layer(base);
+
+@import "tailwindcss";
+
+/* SIDEBAR STYLE HELPERS */
+.menu-item {
+  @apply flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-gray-600 dark:text-gray-300 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800;
+}
+
+.menu-item-active {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+
+.menu-item-inactive {
+  @apply text-gray-600 dark:text-gray-300 hover:text-blue-500;
+}
+
+.menu-item-icon-size {
+  @apply w-5 h-5;
+}
+
+.menu-item-text {
+  @apply text-sm font-medium;
+}
+
+.menu-dropdown-item {
+  @apply block text-gray-500 dark:text-gray-400 text-sm px-3 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors;
+}
+
+.menu-dropdown-item-active {
+  @apply text-blue-600 dark:text-blue-400 font-semibold;
+}
+
+.menu-dropdown-item-inactive {
+  @apply text-gray-500;
+}
+
+/* No scrollbar for sidebar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

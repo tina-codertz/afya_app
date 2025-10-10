@@ -1,14 +1,14 @@
-import { Navbar } from "../components/Navbar";
+// import { Navbar } from "../components/Navbar";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Twitter } from "lucide-react";
-import gep from "../assets/gep.jpg"
+import gep from "../../assets/gep.jpg"
 
 export const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <Navbar />
-
-  
+      {/* <section className="sticky top-0">
+      <Navbar/>
+  </section> */}
       <section
         className="relative bg-cover bg-center py-20 text-white"
         style={{

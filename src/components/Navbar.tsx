@@ -17,7 +17,7 @@ export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900">
+    <div className="bg-gray-100 dark:bg-gray-900 sticky top-0">
       <motion.nav
         ref={navRef}
         initial={{ opacity: 0 }}

@@ -1,28 +1,29 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cors from "cors";
-import userRoutes from "./routes/userRoutes.js";
-import User from "./models/User.js";
+import express from "express"
+import mongoose from "mongoose"
+import dotenv from "dotenv"
+import cors from "cors"
+import morgan from "morgan";
+
+import authRoutes from "./routes/auth.js"
 
 dotenv.config();
 
 const app = express();
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
+app.use(morgan("dev"));
 
-// Connect to MongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/afya_connect")
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("MongoDB connection error:", err));
 
-// Routes
-app.use("/api/users", userRoutes);
+app.use("/api", authRoutes);
 
-
-app.get("/test", (req, res) => {
-  res.send("Backend connected!");
+app.get("/api/users", (_req, res) => {
+  res.send("users found");
 });
 
-const PORT = process.env.PORT 
-app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
