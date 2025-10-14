@@ -15,14 +15,14 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { icon: <GridIcon />, name: "Dashboard", subItems: [{ name: "Overview", path: "/", pro: false }] },
-  { icon: <CalendarIcon />, name: "Calendar", path: "/calendar" },
-  { icon: <UserCircleIcon />, name: "User Profile", path: "/profile" },
-  { icon: <ListIcon />, name: "Specialist Care", path: "services/specialist" },
-  { icon: <User />, name: "Doctors", path: "doctors" },
-  { icon: <BrainCircuit />, name: "AI Assistance", path: "AI" },
-  { icon: <BookAIcon />, name: "Blogs", path: "blog" },
-  { icon: <BookUpIcon />, name: "Book Appointment", path:"book-appointment" },
+  { icon: <GridIcon />, name: "Dashboard", subItems: [{ name: "Overview", path: "/dashboard", pro: false }] },
+  { icon: <CalendarIcon />, name: "Calendar", path: "not-found" },
+  { icon: <UserCircleIcon />, name: "User Profile", path: "profile" },
+  { icon: <ListIcon />, name: "Specialist Care", path: "not-found" },
+  { icon: <User />, name: "Doctors", path: "not-found" },
+  { icon: <BrainCircuit />, name: "AI Assistance", path: "not-found" },
+  { icon: <BookAIcon />, name: "Blogs", path: "not-found" },
+  { icon: <BookUpIcon />, name: "Book Appointment", path:"not-found" },
 ];
 
 const othersItems: NavItem[] = [
@@ -30,8 +30,8 @@ const othersItems: NavItem[] = [
     icon: <PieChartIcon />,
     name: "Charts",
     subItems: [
-      { name: "Line Chart", path: "/line-chart", pro: false },
-      { name: "Bar Chart", path: "/bar-chart", pro: false },
+      { name: "Line Chart", path: "services/specialist", pro: false },
+      { name: "Bar Chart", path: "services/specialist", pro: false },
     ],
   },
   {
@@ -50,8 +50,8 @@ const othersItems: NavItem[] = [
     icon: <PlugIcon />,
     name: "Authentication",
     subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
+      { name: "Sign In", path: "/services/specialist", pro: false },
+      { name: "Sign Up", path: "services/specialist", pro: false },
     ],
   },
 ];
@@ -161,7 +161,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 left-0 bg-white dark:bg-gray-900 h-screen border-r border-gray-200 dark:border-gray-800 transition-all duration-300 z-50
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 left-0 bg-white h-screen border-r border-gray-200 dark:border-gray-800 transition-all duration-300 z-50
         ${isExpanded || isHovered || isMobileOpen ? "w-[290px]" : "w-[90px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       onMouseEnter={() => !isExpanded && setIsHovered(true)}

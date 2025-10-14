@@ -2,7 +2,7 @@ import React from 'react';
 
 const DashboardHome: React.FC = () => {
   return (
-    <div className="space-y-6 ">
+    <div className="space-y-6 flex flex-col items-center justify-center h-full ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
           <p className="text-sm text-gray-500">Upcoming Appointments</p>

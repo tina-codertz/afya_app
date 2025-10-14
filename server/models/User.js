@@ -7,6 +7,14 @@ const userSchema = new mongoose.Schema({
     createdAt:{type:Date, default:Date.now},
 })
 
+const profile = new mongoose.Schema({
+    fullName:{type:String, required:true},
+    email:{type:String, required:true},
+    phoneNumber:String,
+    address:String,
+    bio:String,
+});
 
 
-export default mongoose.model("User", userSchema)
+
+export default mongoose.model("User", userSchema,profile)

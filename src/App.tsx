@@ -23,6 +23,9 @@ import About from "./pages/Home/About";
 import Services from "./pages/Home/Services";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import AuthForm from "./pages/AuthPages/AuthForm";
+import NotFound from "./components/pageNotFound";
+import UserProfile from "./pages/form/UserProfile";
+// import NotFound from "./components/NotFound";
 // import AfyaChat from './pages/services/AI';
 
 const App = () => {
@@ -49,6 +52,8 @@ const App = () => {
             <Route index element={<DashboardHome />} />
             <Route path="services/general" element={<GeneralService />} />
             <Route path="services/specialist" element={<SpecialistService />} />
+            <Route path="profile" element={<UserProfile/>}/>
+            
             <Route
               path="services/mental-health"
               element={<MentalHealthService />}
@@ -56,6 +61,7 @@ const App = () => {
             <Route path="doctors" element={<Doctors />} />
             <Route path="book-appointment" element={<BookAppointment />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="not-found" element={<NotFound/>}/>
           </Route>
         </Routes>
       </Layout>

@@ -12,6 +12,7 @@ const navItems = [
 ];
 
 export const Navbar: React.FC = () => {
+
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
